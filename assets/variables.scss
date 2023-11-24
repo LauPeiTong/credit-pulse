@@ -2,3 +2,23 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+body {
+  background-color: #F2F4F6 !important;
+}
+
+body, .v-application {
+  background-color: #F2F4F6 !important;
+}
+  
+.max-width-1400 {
+  max-width: 1400px;
+}
+
+.fill-width {
+  width: 100% !important;
+}
+
+md-icon{
+  font-family: 'Material Icons' !important;
+}
