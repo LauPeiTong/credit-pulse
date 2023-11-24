@@ -287,6 +287,7 @@ export default {
   methods: {
     checkRoute (link) {
       if (link === '/borrower-list' && this.$route.name === 'borrower-details') { return true }
+      if (link === '/message' && this.$route.name === 'chatbot') { return true }
       return ('/' + this.$route.name) === link
     },
     tooltipAttached () {

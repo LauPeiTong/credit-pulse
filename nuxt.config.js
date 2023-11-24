@@ -56,8 +56,15 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    // Set your API key here
+    baseURL: '/',
+    headers: {
+      common: {
+        'Content-Type': 'application/json',
+        Authorization: ''
+        // For chatgpt service, replace the above Authorization with: Bearer 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
+      }
+    }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

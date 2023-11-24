@@ -34,6 +34,12 @@ export default {
           link: '/borrower-list',
           name: 'Customer Insights',
           tooltip: 'Customer Insights',
+          icon: 'bx-bullseye'
+        },
+        {
+          link: '/message',
+          name: 'Chatbot',
+          tooltip: 'Chabot',
           icon: 'bx-message'
         },
         {
