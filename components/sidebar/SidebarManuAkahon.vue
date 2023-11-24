@@ -47,7 +47,7 @@
             :class="checkRoute(menuItem.link)? 'selected' : '' "
           )
             i.bx(:class="(menuItem.icon || 'bx-square-rounded') + (checkRoute(menuItem.link)? ' selected_text' : '')")
-            span(:class="checkRoute(menuItem.link)? 'selected_text' : 'links_name'") {{ menuItem.name }}
+            span.text-truncate(:class="checkRoute(menuItem.link)? 'selected_text' : 'links_name'") {{ menuItem.name }}
 
           a(
             v-else
@@ -502,7 +502,7 @@ export default {
   .sidebar li a:hover .links_name,
   .sidebar li a:hover i {
     transition: all 0.5s ease;
-    color: var(--bg-color);
+    color: var(--secondary-color);
   }
   .sidebar li router-link {
     display: flex;

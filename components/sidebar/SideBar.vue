@@ -10,7 +10,7 @@ sidebar-menu-akahon(
   :logoTitleColor="$vuetify.theme.themes.light.primary"
   :iconsColor="$vuetify.theme.themes.light.primary"
   :searchInputTextColor="$vuetify.theme.themes.light.secondary"
-  :menuItemsHoverColor="$vuetify.theme.themes.light.primary"
+  :menuItemsHoverColor="$vuetify.theme.themes.light.background"
   :menuItemsTextColor="$vuetify.theme.themes.light.secondary"
   )
 </template>
