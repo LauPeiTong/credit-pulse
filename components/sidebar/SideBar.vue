@@ -31,7 +31,7 @@ export default {
           icon: 'bx-grid-alt'
         },
         {
-          link: '/borrower-list',
+          link: '/borrower_list',
           name: 'Customer Insights',
           tooltip: 'Customer Insights',
           icon: 'bx-bullseye'

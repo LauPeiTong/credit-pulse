@@ -1,7 +1,7 @@
 <template lang="pug">
 .sidebar(
   :style="cssVars"
-  :class="isOpened ? 'open rounded-xl elevation-5' : 'rounded-xl elevation-5'"
+  :class="isOpened ? 'open rounded-xl shadow' : 'rounded-xl shadow'"
   )
 
   .logo-details(style="margin: 6px 14px 0 14px")
@@ -286,7 +286,7 @@ export default {
   },
   methods: {
     checkRoute (link) {
-      if (link === '/borrower-list' && this.$route.name === 'borrower-details') { return true }
+      if (link === '/borrower_list' && this.$route.name === 'borrower_details') { return true }
       if (link === '/message' && this.$route.name === 'chatbot') { return true }
       return ('/' + this.$route.name) === link
     },
@@ -338,6 +338,9 @@ export default {
   .menu-logo {
     width: 30px;
     margin: 0 10px 0 10px;
+  }
+  .shadow {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
   }
   .sidebar {
     position: relative;
