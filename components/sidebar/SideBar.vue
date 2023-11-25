@@ -37,12 +37,6 @@ export default {
           icon: 'bx-bullseye'
         },
         {
-          link: '/message',
-          name: 'Chatbot',
-          tooltip: 'Chabot',
-          icon: 'bx-message'
-        },
-        {
           link: '/',
           name: 'Setting',
           tooltip: 'Setting',

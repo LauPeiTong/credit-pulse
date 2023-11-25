@@ -16,6 +16,7 @@
           v-breadcrumbs.pa-0(:items="breadcrumbs")
     v-col(cols="8")
       user-profile-vue
+      user-data-vue.pt-4
     v-col(cols="4")
       loan-detail
 </template>
@@ -24,12 +25,14 @@
 import { mapGetters } from 'vuex'
 import UserProfileVue from '~/components/borrower/UserProfile.vue'
 import LoanDetail from '~/components/loan/LoanDetail.vue'
+import UserDataVue from '~/components/borrower/UserData.vue'
+
 export default {
   name: 'BorrowerIdPage',
   components: {
     UserProfileVue,
+    UserDataVue,
     LoanDetail
-
   },
   layout: 'default',
   data () {

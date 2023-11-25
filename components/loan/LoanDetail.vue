@@ -1,137 +1,79 @@
-<template>
-<!-- //- .loan-approval-summary
-//-   .header
-//-     .title Loan Approval Summary
-//-     .processing Processing
+<template lang="pug">
+v-card.shadow.pa-4.rounded-lg.white(elevation="0")
+  .loan-approval-summary
+    .d-flex.justify-space-between.align-center.mb-2
+      p.mb-0.font-weight-medium Loan Approval Summary
+      v-chip.my-1(
+        :color="getChipColor(customer.status)"
+        :textColor="getColor(customer.status)"
+        pill
+      )
+        p.mb-0 {{ customer.status }}
 
-//-   .detail-box
-//-     .detail
-//-       .detail-label Loan Amount
-//-       .detail-value.bigger-font.blue-text MYR 100,000
+    .detail-box
+      .detail
+        .detail-label Loan Amount
+        .detail-value.bigger-font.blue-text MYR 100,000
 
-//-   .detail-box
-//-     .detail
-//-       .detail-label.smaller-font Loan Product
-//-       .detail-value.bigger-font.blue-text Personal Loan
-//-       .detail-value.smaller-font.blue-text For house purchase
+    .detail-box
+      .detail
+        .detail-label.smaller-font Loan Product
+        .detail-value.bigger-font.blue-text Personal Loan
+        .detail-value.smaller-font for house purchase
 
-//-   .detail-box
-//-     .detail
-//-       .detail-label.smaller-font Interest Rate
-//-       .detail-value.bigger-font.blue-text 4.45%
+    .detail-box
+      .detail
+        .detail-label.smaller-font Interest Rate
+        .detail-value.bigger-font.blue-text 4.45%
 
-//-   .detail-box
-//-     .detail
-//-       .detail-label.smaller-font Loan Term
-//-       .detail-value.bigger-font.blue-text 6 years 0 months
+    .detail-box
+      .detail
+        .detail-label.smaller-font Loan Term
+        .detail-value.bigger-font.blue-text 6 years 0 months
 
-//-   .detail-box
-//-     .detail
-//-       .detail-label.smaller-font Monthly Payment
-//-       .detail-value.bigger-font.blue-text MYR 2500.00
+    .detail-box
+      .detail
+        .detail-label.smaller-font Monthly Payment
+        .detail-value.bigger-font.blue-text MYR 2500.00
 
-//-   button.evaluate-button
-//-     span Evaluate by CreditAI
-//-     img.robot-icon(src='../../assets/img/credit-pulse-logo.png', alt='robot-icon') -->
+    button.evaluate-button(v-if="!showAnalysis", @click="predict")
+      span Evaluate by CreditAI
+      img.robot-icon(src="../../assets/img/credit-pulse-logo.png", alt="robot-icon")
 
-<div>
-  <div class="loan-approval-summary">
-    <div class="header">
-      <div class="title">Loan Approval Summary</div>
-      <!-- <div v-if="!loanStatus && loanReject" class="reject">Rejected</div> -->
-      <!-- <div v-if="!loanStatus" class="processing">Processing</div>
-      <div v-if="loanStatus" class="approved">Approved</div> -->
-      <div v-if="loanStatus === 'rejected'" class="rejected">Rejected</div>
-      <div v-else-if="loanStatus === 'processing'" class="processing">Processing</div>
-      <div v-else-if="loanStatus === 'approved'" class="approved">Approved</div>
-    </div>
+  .analysis(v-if="showAnalysis")
+    .analysis-box
+      img.robot-icon(src="../../assets/img/credit-pulse-logo.png", alt="robot-icon")
+      .analysis-title.bigger-font.blue-text Analysis of CreditAI
+      .analysis-detail Credit Evaluation Schema:
 
-    <div class="detail-box">
-      <div class="detail">
-        <div class="detail-label">Loan Amount</div>
-        <div class="detail-value bigger-font blue-text">MYR 100,000</div>
-      </div>
-    </div>
+      .analysis-item
+        div Credit Score({{ credit_score }}/40%)
+        .percentage-bar(:style="{ width: '75%' }")
 
-    <div class="detail-box">
-      <div class="detail">
-        <div class="detail-label smaller-font">Loan Product</div>
-        <div class="detail-value bigger-font blue-text">Personal Loan</div>
-        <div class="detail-value smaller-font">for house purchase</div>
-      </div>
-    </div>
+      .analysis-item
+        div Debt to Income Ratio({{ ratio }}/30%)
+        .percentage-bar(:style="{ width: '93%' }")
 
-    <div class="detail-box">
-      <div class="detail">
-        <div class="detail-label smaller-font">Interest Rate</div>
-        <div class="detail-value bigger-font blue-text">4.45%</div>
-      </div>
-    </div>
+      .analysis-item
+        div Social Media Behavior({{ social_media }}/15%)
+        .percentage-bar(:style="{ width: '67%' }")
 
-    <div class="detail-box">
-      <div class="detail">
-        <div class="detail-label smaller-font">Loan Term</div>
-        <div class="detail-value bigger-font blue-text">6 years 0 months</div>
-      </div>
-    </div>
+      .analysis-item
+        div Background Check({{ background_check }}/15%)
+        .percentage-bar(:style="{ width: '93%' }")
 
-    <div class="detail-box">
-      <div class="detail">
-        <div class="detail-label smaller-font">Monthly Payment</div>
-        <div class="detail-value bigger-font blue-text">MYR 2500.00</div>
-      </div>
-    </div>
+      .conclusion
+        div Conclusion & Reasons:
+        div {{ summary }}
 
-    <!-- <button v-if="!showAnalysis" @click="showAnalysis = true ,predict" class="evaluate-button"></button> -->
-    <button v-if="!showAnalysis" @click="predict"  class="evaluate-button">
-      <span>Evaluate by CreditAI</span>
-      <img src="../../assets/img/credit-pulse-logo.png" alt="robot-icon" class="robot-icon" />
-    </button>
-  </div>
-
-  <div v-if="showAnalysis" class="analysis-box">
-    <img src="../../assets/img/credit-pulse-logo.png" alt="robot-icon" class="robot-icon" />
-    <div class="analysis-title bigger-font blue-text">Analysis of CreditAI</div>
-    <div class="analysis-detail">Credit Evaluation Schema:</div>
-
-    <div class="analysis-item">
-      <div>Credit Score({{ credit_score }}/40%)</div>
-      <div class="percentage-bar" :style="{ width: '75%' }"></div>
-    </div>
-
-    <div class="analysis-item">
-      <div>Debt to Income Ratio({{ ratio }}/30%)</div>
-      <div class="percentage-bar" :style="{ width: '93%' }"></div>
-    </div>
-
-    <div class="analysis-item">
-      <div>Social Media Behavior({{ social_media }}/15%)</div>
-      <div class="percentage-bar" :style="{ width: '67%' }"></div>
-    </div>
-
-    <div class="analysis-item">
-      <div>Background Check({{ background_check }}/15%)</div>
-      <div class="percentage-bar" :style="{ width: '93%' }"></div>
-    </div>
-
-    <div class="conclusion">
-      <div>Conclusion & Reasons:</div>
-      <div>{{ summary }}</div>
-    </div>
-  </div>
-    <div v-if="showAnalysis">
-    <div class="action-buttons">
-      <!-- <button class="reject-button" @click="handleReject">Reject</button> -->
-      <LoanRecommendation> </LoanRecommendation>
-      <button class="approve-button" @click="handleApprove">Approve</button>
-    </div>
-
-  </div>
-</div>
+    div(action-buttons)
+      LoanRecommendation
+      button.approve-button(@click="handleApprove") Approve
 
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import LoanRecommendation from '~/components/loan/LoanRecommendation.vue'
 
 export default {
@@ -141,7 +83,7 @@ export default {
   data () {
     return {
       // loanStatus: false,
-      loanStatus: 'processing',
+      customer: null,
       showAnalysis: false,
       summary: '',
       credit_score: 0,
@@ -163,19 +105,55 @@ export default {
       loan_recommendations: [
         { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 },
         { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 },
-        { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 }]
+        { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 }],
+      colors: [
+        { name: 'Approved', color: '#1F9254', background: '#EBF9F1' },
+        { name: 'Processing', color: '#CD6200', background: '#FEF2E5' },
+        { name: 'Rejected', color: '#BB0000', background: '#FBE7E8' }
+      ]
     }
   },
+  computed: {
+    ...mapGetters({
+      getCustomerById: 'customer/getCustomerById'
+    })
+  },
+  watch: {
+    $route (to, from) {
+      this.customer = to.params.customer
+    }
+  },
+  created () {
+    // console.log(this.$route.params)
+    this.customer = this.getCustomerById(this.$route.params.id)
+  },
   methods: {
+    ...mapActions({
+      changeLoanStatus: 'customer/changeLoanStatus'
+    }),
+    getColor (status) {
+      const result = this.colors.find((c) => { return c.name === status })
+      if (result) {
+        return result.color
+      } else {
+        return this.$vuetify.theme.themes.primary
+      }
+    },
+    getChipColor (status) {
+      const result = this.colors.find((c) => { return c.name === status })
+      if (result) {
+        return result.background
+      } else {
+        return this.$vuetify.theme.themes.background
+      }
+    },
     handleReject () {
       // Handle rejection logic
-      // this.$router.push('/donation')
       console.log('Loan Rejected')
     },
     handleApprove () {
       // Handle approval logic
-      // this.loanStatus = true
-      this.loanStatus = 'approved'
+      this.changeLoanStatus({ c: this.customer, s: 'Approved' })
       console.log('Loan Approved')
     },
     showAnalysisDetail () {
@@ -236,17 +214,6 @@ export default {
 </script>
 
 <style scoped>
-.loan-approval-summary {
-  max-width: 800px;
-  margin: 20px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
 
 .title {
   font-size: 18px;

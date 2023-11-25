@@ -20,12 +20,16 @@ export default new Vuetify({
         darkBlue: '#314760',
         orange: '#FDA42E',
         background: '#F2F4F6',
+        background2: '#F4F6FB',
         lightRed: '#F9F4F4',
         lightRed2: '#f2e7e7',
         lightRed3: '#ebdbdb',
         lightBlue: '#e5e6ee',
         lightBlue2: '#aaaec8',
-        lightBlue3: '#E5E6EE'
+        lightBlue3: '#E5E6EE',
+        weak: '#F52F62',
+        good: '#4AA9F2',
+        excellent: '#49CFB2'
       }
     }
   }

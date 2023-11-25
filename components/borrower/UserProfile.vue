@@ -5,7 +5,7 @@ v-card.user-profile.shadow.pa-2.rounded-lg(elevation="0")
 
   .d-flex.mt-n14.px-4
     v-avatar.profile-pic(size="120")
-      img(:src="require(`../../assets/employee/10.png`)" alt="John")
+      img.background(:src="require(`../../assets/${customer.id.startsWith('A') ? 'employee' : 'company'}/${customer.logo}.png`)" alt="John")
     .d-grid.pt-15.pl-4
       p.mb-0.text-h6 {{ customer.name }}
       p.mt-n1.body-2 Borrower ID: {{ customer.id }}
@@ -86,7 +86,7 @@ export default {
         col: 4,
         icon: 'mdi-account-group',
         title: 'Race',
-        value: 'Cina'
+        value: this.customer.race ?? 'Cina'
       },
       {
         col: 4,

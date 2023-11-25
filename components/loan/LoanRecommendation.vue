@@ -6,41 +6,7 @@
             //- v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150")
             v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150" @click="openDialog")
               | Reject
-          //- template(v-slot:default="dialog")
-          //-   v-card.rounded-xl
-          //-     fetchdata()
-          //-     v-toolbar(color="primary", dark)
-          //-       | Loan Application Recommendation
-          //-     v-card-text(color="black")
-          //-       div.subtitle-1.pa-12 Based on the financial profile, we recommend the following loan options. If the application is rejected, these alternative loan options will be suggested for customer. This can help applicants explore other avenues and find a better-suited loan product.
-          //-       v-col
-          //-         v-row.justify-center
-          //-           v-col
-          //-             .d-flex.justify-center.pt-5
-          //-             v-item-group
-          //-               v-container
-          //-                 v-row
-          //-                   v-col(v-for="n in 3" :key="n" cols="12" md="4")
-          //-                     v-item(v-slot="{ active, toggle }")
-          //-                       v-card(:color="active ? 'light-blue lighten-4' : 'white'" class="d-flex flex-column align-center" outlined height="200" @click="toggle" max-width="350")
-          //-                         v-scroll-y-transition
-          //-                           div(class="text-h6 text-center mb-4")
-          //-                             | Loan Recommendation {{ n }}
-          //-                             br
-          //-                             | Amount: RM{{ loan_recommendations[n-1].loan_amount }}
-          //-                             br
-          //-                             | Term: {{ loan_recommendations[n-1].term }}
-          //-                             br
-          //-                             | Interest Rate: {{ loan_recommendations[n-1].interest_rate }}%
-          //-                             br
-          //-                             | Monthly Payment: RM{{ loan_recommendations[n-1].monthly_payment  }}
-          //-         v-card-text.justify-center
-          //-           div.subtitle-1.pa-12 Are you sure you want to reject the loan application for Ray Gan?
-          //-     v-card-actions(class="justify-center")
-          //-       v-btn(color="grey", @click="goBackToPreviousPage()")
-          //-         | cancel
-          //-       v-btn(color="red", @click="Accepted()")
-          //-         | Reject
+
           template(v-slot:default="dialog")
             v-card.rounded-xl
               fetchdata()
@@ -80,6 +46,8 @@
   </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 import LoanDetail from '~/components/loan/LoanDetail.vue'
 export default {
   components: {
@@ -87,6 +55,7 @@ export default {
   },
   data () {
     return {
+      customer: null,
       numberInput: '',
       selectedButton: '',
       loan_amount0: 0,
@@ -110,10 +79,27 @@ export default {
       loanStatus: 'processing'
     }
   },
+  computed: {
+    ...mapGetters({
+      getCustomerById: 'customer/getCustomerById'
+    })
+  },
+  watch: {
+    $route (to, from) {
+      this.customer = to.params.customer
+    }
+  },
   mounted () {
     // this.fetchdata()
   },
+  created () {
+    // console.log(this.$route.params)
+    this.customer = this.getCustomerById(this.$route.params.id)
+  },
   methods: {
+    ...mapActions({
+      changeLoanStatus: 'customer/changeLoanStatus'
+    }),
     searchBy (newValue) {
       this.search = newValue
     },
@@ -125,6 +111,7 @@ export default {
       // this.$router.push('/borrower_list')
       this.loanStatus = 'approved'
       this.dialogVisible = false
+      this.changeLoanStatus({ c: this.customer, s: 'Rejected' })
     },
     isActive (itemNumber) {
       return this.activeItem === itemNumber

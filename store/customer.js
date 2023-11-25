@@ -12,7 +12,10 @@ export const state = () => ({
           date: '13/05/2022',
           logo: 1,
           status: 'Approved',
-          purpose: 'House Purchase'
+          purpose: 'House Purchase',
+          phone: '+6016-800 1231',
+          email: 'nicholas@gmail.com',
+          creditScore: 760
         },
         {
           id: 'A18933',
@@ -22,7 +25,10 @@ export const state = () => ({
           date: '06/05/2022',
           logo: 2,
           status: 'Approved',
-          purpose: 'Debt Consolidation'
+          purpose: 'Debt Consolidation',
+          phone: '+6014-123 1111',
+          email: 'sayheng@gmail.com',
+          creditScore: 790
         },
         {
           id: 'A18934',
@@ -34,17 +40,21 @@ export const state = () => ({
           status: 'Processing',
           purpose: 'House Purchase',
           phone: '+6012-482 2911',
-          email: 'raygan@gmail.com'
+          email: 'raygan@gmail.com',
+          creditScore: 804
         },
         {
           id: 'A18935',
-          name: 'Chan Meng Hui',
+          name: 'Tan Meng Heng',
           category: 'Mortgage Loan',
           amount: 12000000,
           date: '16/05/2022',
           logo: 4,
           status: 'Processing',
-          purpose: 'Purchase or refinance a home'
+          purpose: 'Purchase or refinance a home',
+          phone: '+6012-899 8922',
+          email: 'meng@gmail.com',
+          creditScore: 612
         },
         {
           id: 'A18936',
@@ -54,7 +64,10 @@ export const state = () => ({
           date: '17/05/2022',
           logo: 5,
           status: 'Approved',
-          purpose: 'Debt Collection'
+          purpose: 'Debt Collection',
+          phone: '+6014-232 2221',
+          email: 'kris@gmail.com',
+          creditScore: 712
         },
         {
           id: 'A18937',
@@ -64,7 +77,10 @@ export const state = () => ({
           date: '22/04/2022',
           logo: 6,
           status: 'Processing',
-          purpose: 'Other'
+          purpose: 'Other',
+          phone: '+6017-122 6744',
+          email: 'evans@gmail.com',
+          creditScore: 634
         },
         {
           id: 'A18938',
@@ -74,7 +90,11 @@ export const state = () => ({
           date: '21/01/2022',
           logo: 7,
           status: 'Rejected',
-          purpose: 'Credit Card'
+          purpose: 'Credit Card',
+          phone: '+6012-111 3223',
+          email: 'khairul@gmail.com',
+          race: 'Malay',
+          creditScore: 567
         },
         {
           id: 'A18939',
@@ -84,7 +104,10 @@ export const state = () => ({
           date: '23/06/2022',
           logo: 8,
           status: 'Processing',
-          purpose: 'Debt Consolidation'
+          purpose: 'Debt Consolidation',
+          phone: '+6016-376 9888',
+          email: 'peitong@gmail.com',
+          creditScore: 744
         },
         {
           id: 'A18940',
@@ -94,7 +117,10 @@ export const state = () => ({
           date: '12/06/2022',
           logo: 9,
           purpose: 'Debt Consolidation',
-          status: 'Approved'
+          status: 'Approved',
+          phone: '+6016-877 6554',
+          email: 'dylan@gmail.com',
+          creditScore: 722
         }
       ]
     },
@@ -217,11 +243,23 @@ export const mutations = {
   updateCustomer (state, customer) {
     state.customer = customer
     console.log(state.customer)
+  },
+  updateLoanStatus (state, { c: customer, s: status }) {
+    let l = state.list[0]
+    if (customer.id.startsWith('B')) {
+      l = state.list[1]
+    }
+    // console.log(l)
+    const selectedCustomer = l.table.find(c => c.id === customer.id)
+    selectedCustomer.status = status
   }
 }
 
 export const actions = {
   viewCustomer ({ commit }, customer) {
     commit('updateCustomer', customer)
+  },
+  changeLoanStatus ({ commit }, { c: customer, s: status }) {
+    commit('updateLoanStatus', { c: customer, s: status })
   }
 }
