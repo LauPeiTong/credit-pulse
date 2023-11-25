@@ -38,8 +38,12 @@
   <div class="loan-approval-summary">
     <div class="header">
       <div class="title">Loan Approval Summary</div>
-      <div v-if="!loanStatus" class="processing">Processing</div>
-      <div v-if="loanStatus" class="approved">Approved</div>
+      <!-- <div v-if="!loanStatus && loanReject" class="reject">Rejected</div> -->
+      <!-- <div v-if="!loanStatus" class="processing">Processing</div>
+      <div v-if="loanStatus" class="approved">Approved</div> -->
+      <div v-if="loanStatus === 'rejected'" class="rejected">Rejected</div>
+      <div v-else-if="loanStatus === 'processing'" class="processing">Processing</div>
+      <div v-else-if="loanStatus === 'approved'" class="approved">Approved</div>
     </div>
 
     <div class="detail-box">
@@ -136,7 +140,8 @@ export default {
   },
   data () {
     return {
-      loanStatus: false,
+      // loanStatus: false,
+      loanStatus: 'processing',
       showAnalysis: false,
       summary: '',
       credit_score: 0,
@@ -169,7 +174,8 @@ export default {
     },
     handleApprove () {
       // Handle approval logic
-      this.loanStatus = true
+      // this.loanStatus = true
+      this.loanStatus = 'approved'
       console.log('Loan Approved')
     },
     showAnalysisDetail () {
@@ -221,6 +227,9 @@ export default {
         this.summary = 'error'
       }
       this.loading = false
+    },
+    fetchRejectData () {
+      LoanRecommendation.methods.rejected.call(this)
     }
   }
 }
@@ -256,7 +265,12 @@ export default {
   border-radius: 5px;
   padding: 5px;
 }
-
+.rejected {
+  color: red;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 5px;
+}
 .detail-box {
   border: 2px solid #333; /* Darker border */
   border-radius: 10px; /* Rounder corners */

@@ -3,7 +3,8 @@
       v-col(cols="auto")
         v-dialog(transition="dialog-bottom-transition", max-width="1200" max-length="800" v-model="dialogVisible")
           template(v-slot:activator="{ on, attrs }")
-            v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150")
+            //- v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150")
+            v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150" @click="openDialog")
               | Reject
           //- template(v-slot:default="dialog")
           //-   v-card.rounded-xl
@@ -16,21 +17,6 @@
           //-         v-row.justify-center
           //-           v-col
           //-             .d-flex.justify-center.pt-5
-          //-               //- div.button.justify-center
-          //-               //-   input(type="radio" id="a25" name="check-substitution-2" v-model="selectedOption" value="RM10" @change="updateDetails")
-          //-               //-   label.btn.btn-default(for="a25") RM10
-
-          //-               //-   //- label.text(for="a25") {{ details }}
-          //-               //-   //- div.text.pa-12 {{ details }}
-          //-               //-   //- h2.primary--text.mb-10 {{ credit_score }}
-          //-               //-   //- <div class="text pa-12">{{ details }}</div>
-          //-               //- div.button
-          //-               //-   input(type="radio", id="a50", name="check-substitution-2")
-          //-               //-   label.btn.btn-default(for="a50") RM20
-
-          //-               //- div.button
-          //-               //-   input(type="radio", id="a75", name="check-substitution-2")
-          //-               //-   label.btn.btn-default(for="a75") RM30
           //-             v-item-group
           //-               v-container
           //-                 v-row
@@ -48,42 +34,6 @@
           //-                             | Interest Rate: {{ loan_recommendations[n-1].interest_rate }}%
           //-                             br
           //-                             | Monthly Payment: RM{{ loan_recommendations[n-1].monthly_payment  }}
-          //-               //- div.button-group
-          //-               //- //- Display additional data inside the label
-          //-               //- label.btn.btn-default(for="a25")
-          //-               //-   | RM10
-          //-               //-   div.label-details
-          //-               //-     p Amount: RM10
-          //-               //-     p Term: 12 months
-          //-               //-     p Interest Rate: 5%
-          //-               //-     p Monthly Payment: RM1.00
-          //-               //- input(type="radio" id="a25" name="check-substitution-2" v-model="selectedOption" value="RM10" @change="updateDetails")
-
-          //-               //- div.button-group
-          //-               //- label.btn.btn-default(for="a50")
-          //-               //-   | RM20
-          //-               //-   div.label-details
-          //-               //-     p Amount: RM20
-          //-               //-     p Term: 24 months
-          //-               //-     p Interest Rate: 6%
-          //-               //-     p Monthly Payment: RM2.00
-          //-               //- input(type="radio", id="a50", name="check-substitution-2")
-
-          //-               //- div.button-group
-          //-               //-   label.btn.btn-default(for="a75")
-          //-               //-     | RM30
-          //-               //-     div.label-details
-          //-               //-       p Amount: RM30
-          //-               //-       p Term: 36 months
-          //-               //-       p Interest Rate: 7%
-          //-               //-       p Monthly Payment: RM3.00
-          //-               //-   input(type="radio", id="a75", name="check-substitution-2")
-          //-         //- v-col
-          //-         //-   .d-flex.justify-center.pt-5
-          //-         //-     p or
-          //-         //- .d-flex.justify-center.pt-5
-          //-         //-   p RM
-          //-         //-   input.rounded-x2(type="number", v-model="numberInput", style="background-color: rgb(240, 240, 240);")
           //-         v-card-text.justify-center
           //-           div.subtitle-1.pa-12 Are you sure you want to reject the loan application for Ray Gan?
           //-     v-card-actions(class="justify-center")
@@ -97,7 +47,7 @@
               v-toolbar(color="primary", dark)
                 span.white--text Loan Application Recommendation
               v-card-text(color="black")
-                div.subtitle-1.pa-12
+                div.subtitle-1.pa-4
                   | Based on the financial profile, we recommend the following loan options.
                   | If the application is rejected, these alternative loan options will be suggested for the customer.
                   | This can help applicants explore other avenues and find a better-suited loan product.
@@ -122,10 +72,10 @@
                                       br
                                       | Monthly Payment: RM{{ loan_recommendations[n-1].monthly_payment  }}
                     v-card-text.justify-center
-                      div.subtitle-1.pa-12 Are you sure you want to reject the loan application for Ray Gan?
+                      div.subtitle-1.pa-4 Are you sure you want to reject the loan application for Ray Gan?
               v-card-actions(class="justify-center")
                 v-btn(color="grey", @click="goBackToPreviousPage()") Cancel
-                v-btn(color="red", @click="Accepted()") Reject
+                v-btn(color="red", @click="rejected()") Reject
 
   </template>
 
@@ -156,11 +106,12 @@ export default {
         { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 },
         { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 },
         { loan_amount: 0, interest_rate: 0, term: '', monthly_payment: 0 }],
-      dialogVisible: true
+      dialogVisible: false,
+      loanStatus: 'processing'
     }
   },
   mounted () {
-    this.fetchdata()
+    // this.fetchdata()
   },
   methods: {
     searchBy (newValue) {
@@ -170,8 +121,10 @@ export default {
       this.dialogVisible = false
       // this.$router.go(-1)
     },
-    Accepted () {
-      this.$router.push('/borrower_list')
+    rejected () {
+      // this.$router.push('/borrower_list')
+      this.loanStatus = 'approved'
+      this.dialogVisible = false
     },
     isActive (itemNumber) {
       return this.activeItem === itemNumber
@@ -181,6 +134,10 @@ export default {
     },
     fetchdata () {
       LoanDetail.methods.predict.call(this)
+    },
+    openDialog () {
+      this.fetchdata()
+      this.dialogVisible = true
     }
   }
 }
@@ -229,37 +186,6 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
-}
-.button-group {
-  float: left;
-  margin: 0 5px 0 0;
-  position: relative;
-}
-
-.button-group label,
-.button-group input {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.button-group input[type="radio"] {
-  opacity: 0.011;
-  z-index: 100;
-}
-
-.button-group input[type="radio"]:checked + label {
-  background: rgb(140, 189, 226);
-  border-radius: 4px;
-}
-
-.button-group label {
-  cursor: pointer;
-  z-index: 90;
-  line-height: 1.8em;
 }
 
 .label-details {
