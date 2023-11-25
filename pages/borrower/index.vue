@@ -11,7 +11,7 @@ import { mapGetters } from 'vuex'
 import BorrowerListVue from '~/components/borrowerList/BorrowerList.vue'
 
 export default {
-  name: 'BorrowerListPage',
+  name: 'BorrowerPage',
   components: {
     BorrowerListVue
   },
