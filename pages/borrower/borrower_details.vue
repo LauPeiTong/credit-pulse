@@ -28,6 +28,7 @@ export default {
   name: 'BorrowerDetailsPage',
   components: {
     UserProfileVue
+
   },
   layout: 'default',
   data () {
