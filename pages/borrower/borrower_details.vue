@@ -8,7 +8,7 @@
           text
           icon
           color="primary"
-          href="borrower_list"
+          @click="goToList"
         )
           v-icon mdi-chevron-left
         .d-grid.pl-2
@@ -52,6 +52,9 @@ export default {
     })
   },
   methods: {
+    goToList () {
+      this.$router.push('/borrower/borrower_list')
+    }
   }
 }
 </script>

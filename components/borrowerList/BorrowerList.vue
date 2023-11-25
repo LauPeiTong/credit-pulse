@@ -21,13 +21,13 @@
           :headers="headers"
           :items="l.table"
           multi-sort
-          @click:row=""
+          @click:row="onRowClick"
         )
 
             template(v-slot:body.prepend)
               tr
                 td.py-4
-                  v-text-field(v-model="total_sales" type="number" label="ID" hide-details="auto" dense outlined)
+                  v-text-field(v-model="id" type="number" label="ID" hide-details="auto" dense outlined)
                 td.py-4
                   v-text-field(v-model="name" type="text" label="Name" hide-details="auto" dense outlined)
                 td.py-4
@@ -84,7 +84,7 @@
 
             template(v-slot:item.actions="{ item }")
               .d-flex.align-center.mt-3
-                v-icon.primary--text.mr-2(@click="") mdi-magnify
+                v-icon.primary--text.mr-2(@click="onRowClick(item)") mdi-magnify
                 v-icon.primary--text(@click="") mdi-pencil-box-outline
 
             template(v-slot:footer.page-text)
@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import PaginateComp from './PaginateComp.vue'
 
 export default {
@@ -386,6 +387,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      viewCustomer: 'customer/viewCustomer'
+    }),
     getColor (status) {
       const result = this.colors.find((c) => { return c.name === status })
       if (result) {
@@ -401,6 +405,10 @@ export default {
       } else {
         return this.$vuetify.theme.themes.background
       }
+    },
+    onRowClick (item) {
+      this.viewCustomer(item)
+      this.$router.push('/borrower/borrower_details')
     }
   }
 }
