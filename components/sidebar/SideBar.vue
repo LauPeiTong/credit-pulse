@@ -2,7 +2,7 @@
 sidebar-menu-akahon(
   :menuItems="menus"
   :isUsedVueRouter="true"
-  :menuTitle="'Credit Pulse'"
+  :menuTitle="'CREDIT PULSE'"
   :menuLogo="require(`../../assets/img/credit-pulse-logo.png`)"
   :profileImg="require(`../../assets/employee/1.png`)"
   :bgColor="'white'"
