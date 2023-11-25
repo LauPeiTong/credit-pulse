@@ -17,17 +17,18 @@
     v-col(cols="8")
       user-profile-vue
     v-col(cols="4")
-
+      loan-detail
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import UserProfileVue from '~/components/borrower/UserProfile.vue'
-
+import LoanDetail from '~/components/loan/LoanDetail.vue'
 export default {
   name: 'BorrowerIdPage',
   components: {
-    UserProfileVue
+    UserProfileVue,
+    LoanDetail
 
   },
   layout: 'default',
