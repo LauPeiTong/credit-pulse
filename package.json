@@ -14,6 +14,7 @@
   "dependencies": {
     "@lossendae/vue-avatar": "^0.1.5",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/google-fonts": "^3.1.0",
     "chart.js": "^4.4.0",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",

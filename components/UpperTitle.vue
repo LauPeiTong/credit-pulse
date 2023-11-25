@@ -89,10 +89,10 @@ export default {
   width: 100%;
   border-radius: 0px 0px 12px 12px;
   z-index: 100;
+  background-color: #F2F4F6;
 }
 
 .dark-background {
-  background-color: #F2F4F6;
 }
 
 .notification {

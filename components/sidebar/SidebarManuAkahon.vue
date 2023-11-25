@@ -286,7 +286,7 @@ export default {
   },
   methods: {
     checkRoute (link) {
-      if (link === '/borrower_list' && this.$route.name === 'borrower_details') { return true }
+      if (link.startsWith('/borrower') && this.$route.name.startsWith('borrower')) { return true }
       if (link === '/message' && this.$route.name === 'chatbot') { return true }
       return ('/' + this.$route.name) === link
     },
