@@ -25,7 +25,7 @@ import { mapGetters } from 'vuex'
 import UserProfileVue from '~/components/borrower/UserProfile.vue'
 
 export default {
-  name: 'BorrowerDetailsPage',
+  name: 'BorrowerIdPage',
   components: {
     UserProfileVue
   },
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     goToList () {
-      this.$router.push('/borrower/borrower_list')
+      this.$router.push('/borrower')
     }
   }
 }

@@ -7,8 +7,8 @@ v-card.user-profile.shadow.pa-2.rounded-lg(elevation="0")
     v-avatar.profile-pic(size="120")
       img(:src="require(`../../assets/employee/10.png`)" alt="John")
     .d-grid.pt-15.pl-4
-      p.mb-0.text-h6 Ray Gan Boon Kit
-      p.mt-n1.body-2 Borrower ID: 123456
+      p.mb-0.text-h6 {{ customer.name }}
+      p.mt-n1.body-2 Borrower ID: {{ customer.id }}
 
   .px-4.pt-4.pb-5
     p.font-weight-medium.mb-1 Borrower Details
@@ -23,63 +23,78 @@ v-card.user-profile.shadow.pa-2.rounded-lg(elevation="0")
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'UserProfile',
   data () {
     return {
-      basicData: [
-        {
-          col: 6,
-          icon: 'mdi-phone',
-          title: 'Phone Number',
-          value: '+6016-382 9423'
-        },
-        {
-          col: 6,
-          icon: 'mdi-email',
-          title: 'Email Address',
-          value: 'raygan@gmail.com'
-        },
-        {
-          col: 4,
-          icon: 'mdi-card-account-details',
-          title: 'Identification Number',
-          value: '001214-14-0923'
-        },
-        {
-          col: 4,
-          icon: 'mdi-calendar-blank',
-          title: 'Date of Birth',
-          value: '14 Dec 2000'
-        },
-        {
-          col: 4,
-          icon: 'mdi-calendar-blank',
-          title: 'Age',
-          value: '14 Dec 2000'
-        },
-        {
-          col: 4,
-          icon: 'mdi-calendar-blank',
-          title: 'Gender',
-          value: '14 Dec 2000'
-        },
-        {
-          col: 4,
-          icon: 'mdi-calendar-blank',
-          title: 'Race',
-          value: '14 Dec 2000'
-        },
-        {
-          col: 4,
-          icon: 'mdi-calendar-blank',
-          title: 'Marital Status',
-          value: '14 Dec 2000'
-        }
-      ]
+      customer: null,
+      basicData: null
     }
   },
   computed: {
+    ...mapGetters({
+      getCustomerById: 'customer/getCustomerById'
+    })
+  },
+  watch: {
+    $route (to, from) {
+      this.customer = to.params.customer
+    }
+  },
+  created () {
+    // console.log(this.$route.params)
+    this.customer = this.getCustomerById(this.$route.params.id)
+    this.basicData = [
+      {
+        col: 6,
+        icon: 'mdi-phone',
+        title: 'Phone Number',
+        value: this.customer.phone ?? '+6016-382 9423'
+      },
+      {
+        col: 6,
+        icon: 'mdi-email',
+        title: 'Email Address',
+        value: this.customer.email ?? 'raygan@gmail.com'
+      },
+      {
+        col: 4,
+        icon: 'mdi-card-account-details',
+        title: 'Identification Number',
+        value: '001214-14-0923'
+      },
+      {
+        col: 4,
+        icon: 'mdi-calendar-blank',
+        title: 'Date of Birth',
+        value: '14 Dec 2000'
+      },
+      {
+        col: 4,
+        icon: 'mdi-account',
+        title: 'Age',
+        value: '23'
+      },
+      {
+        col: 4,
+        icon: 'mdi-gender-male-female',
+        title: 'Gender',
+        value: 'Male'
+      },
+      {
+        col: 4,
+        icon: 'mdi-account-group',
+        title: 'Race',
+        value: 'Cina'
+      },
+      {
+        col: 4,
+        icon: 'mdi-account-multiple',
+        title: 'Marital Status',
+        value: 'Single'
+      }
+    ]
   }
 }
 </script>

@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import PaginateComp from './PaginateComp.vue'
 
 export default {
@@ -191,200 +191,13 @@ export default {
         },
         { text: '', align: 'center', sortable: false, value: 'actions' },
         { text: 'Action', align: 'center', sortable: false, value: 'actions' }
-      ],
-      list: [
-        {
-          id: 1,
-          table: [
-            {
-              id: '#20462',
-              name: 'Nicholas Lee Wen Jie',
-              category: 'Personal Loans',
-              amount: 17000000,
-              date: '13/05/2022',
-              logo: 1,
-              status: 'Approved',
-              purpose: 'House Purchase'
-            },
-            {
-              id: '#18933',
-              name: 'Lau Say Heng',
-              category: 'Personal Loans',
-              amount: 100000,
-              date: '22/05/2022',
-              logo: 2,
-              status: 'Approved',
-              purpose: 'Debt Consolidation'
-            },
-            {
-              id: '#18934',
-              name: 'Ray Gan Boon Kit',
-              category: 'Personal Loans',
-              amount: 120000,
-              date: '22/05/2022',
-              logo: 10,
-              status: 'Processing',
-              purpose: 'House Purchase'
-            },
-            {
-              id: '#18935',
-              name: 'Chan Meng Hui',
-              category: 'Mortgage Loan',
-              amount: 13242100,
-              date: '22/05/2022',
-              logo: 4,
-              status: 'Processing',
-              purpose: 'Purchase or refinance a home'
-            },
-            {
-              id: '#18936',
-              name: 'Kris Chan Si Han',
-              category: 'Credit Card',
-              amount: 13242100,
-              date: '22/05/2022',
-              logo: 5,
-              status: 'Approved',
-              purpose: 'Debt Collection'
-            },
-            {
-              id: '#18937',
-              name: 'Evans Lee Ci Cen',
-              category: 'Personal Loans',
-              amount: 13242100,
-              date: '22/05/2022',
-              logo: 6,
-              status: 'Processing',
-              purpose: 'Other'
-            },
-            {
-              id: '#18938',
-              name: 'Khairul bin Ahmad',
-              category: 'Personal Loans',
-              amount: 13242100,
-              date: '22/05/2022',
-              logo: 7,
-              status: 'Rejected',
-              purpose: 'Credit Card'
-            },
-            {
-              id: '#18939',
-              name: 'Lau Pei Tong',
-              category: 'Personal Loans',
-              amount: 13242100,
-              date: '22/05/2022',
-              logo: 8,
-              status: 'Processing',
-              purpose: 'Debt Consolidation'
-            },
-            {
-              id: '#18940',
-              name: 'Dylan Tan Ze Han',
-              category: 'Personal Loans',
-              amount: 13242100,
-              date: '22/05/2022',
-              logo: 9,
-              purpose: 'Debt Consolidation',
-              status: 'Approved'
-            }
-          ]
-        },
-        {
-          id: 2,
-          table: [
-            {
-              id: '#20462',
-              name: 'Fintech Corporation',
-              category: 'Startup Loans',
-              amount: 14000000,
-              date: '13/05/2022',
-              logo: 1,
-              status: 'Processing',
-              purpose: 'Funding for new businesses'
-            },
-            {
-              id: '#18933',
-              name: 'Sunny Global Co.',
-              category: 'Business Term Loan',
-              amount: 12242100,
-              date: '14/05/2022',
-              logo: 2,
-              status: 'Approved',
-              purpose: 'Funding for expansion'
-            },
-            {
-              id: '#18934',
-              name: 'Quantum Globe Co.',
-              category: 'Franchise Financing',
-              amount: 10242100,
-              date: '15/05/2022',
-              logo: 3,
-              status: 'Processing',
-              purpose: 'Funding for expansion'
-            },
-            {
-              id: '#18935',
-              name: 'Globalify Ltd.',
-              category: 'Franchise Financing',
-              amount: 32242100,
-              date: '15/05/2022',
-              logo: 4,
-              status: 'Rejected',
-              purpose: 'Funding for expansion'
-            },
-            {
-              id: '#18936',
-              name: 'Pioneer Group Ltd.',
-              category: 'Startup Loans',
-              amount: 2252100,
-              date: '16/05/2022',
-              logo: 5,
-              status: 'Approved',
-              purpose: 'Funding for new businesses'
-            },
-            {
-              id: '#18937',
-              name: 'Vertex Holdings LLC',
-              category: 'Startup Loans',
-              amount: 32992100,
-              date: '16/05/2022',
-              logo: 6,
-              status: 'Processing',
-              purpose: 'Funding for new business'
-            },
-            {
-              id: '#18938',
-              name: 'Echelon Capital Ltd.',
-              category: 'Equipment Financing',
-              amount: 13242100,
-              date: '18/05/2022',
-              logo: 7,
-              status: 'Approved',
-              purpose: 'Purchasing of business equipment or machinery'
-            },
-            {
-              id: '#18939',
-              name: 'Nexus Group Ltd.',
-              category: 'Franchise Financing',
-              amount: 30242100,
-              date: '22/05/2022',
-              logo: 8,
-              status: 'Processing',
-              purpose: 'Funding for expansion'
-            },
-            {
-              id: '#18940',
-              name: 'Evolvation Inc.',
-              category: 'Startup Loans',
-              amount: 21242100,
-              date: '22/05/2022',
-              logo: 8,
-              status: 'Approved',
-              purpose: 'Funding for new businesses'
-            }
-          ]
-        }
       ]
     }
+  },
+  computed: {
+    ...mapGetters({
+      list: 'customer/getList'
+    })
   },
   methods: {
     ...mapActions({
@@ -408,7 +221,7 @@ export default {
     },
     onRowClick (item) {
       this.viewCustomer(item)
-      this.$router.push('/borrower/borrower_details')
+      this.$router.push({ name: 'borrower-id', params: { id: item.id, customer: item } })
     }
   }
 }
