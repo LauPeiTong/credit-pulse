@@ -62,7 +62,7 @@ export default {
       common: {
         'Content-Type': 'application/json',
         Authorization: ''
-        // For chatgpt service, replace the above Authorization with: Bearer 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
+        // For chatgpt service, replace the above Authorization with: Bearer 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
       }
     }
   },
@@ -72,6 +72,12 @@ export default {
     customVariables: ['~/assets/variables.scss'],
     optionsPath: '~/plugins/vuetify.js',
     treeShake: true
+  },
+
+  googleFonts: {
+    families: {
+      Roboto: true
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

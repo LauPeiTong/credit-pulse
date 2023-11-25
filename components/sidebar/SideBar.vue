@@ -2,7 +2,7 @@
 sidebar-menu-akahon(
   :menuItems="menus"
   :isUsedVueRouter="true"
-  :menuTitle="'Credit Pulse'"
+  :menuTitle="'CREDIT PULSE'"
   :menuLogo="require(`../../assets/img/credit-pulse-logo.png`)"
   :profileImg="require(`../../assets/employee/1.png`)"
   :bgColor="'white'"
@@ -31,7 +31,7 @@ export default {
           icon: 'bx-grid-alt'
         },
         {
-          link: '/borrower_list',
+          link: '/borrower/borrower_list',
           name: 'Customer Insights',
           tooltip: 'Customer Insights',
           icon: 'bx-bullseye'
