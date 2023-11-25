@@ -86,7 +86,7 @@ export default {
         col: 4,
         icon: 'mdi-account-group',
         title: 'Race',
-        value: this.customer.race ?? 'Cina'
+        value: this.customer.race ?? 'Chinese'
       },
       {
         col: 4,

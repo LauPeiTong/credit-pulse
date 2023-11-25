@@ -65,10 +65,12 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
       .conclusion
         div Conclusion & Reasons:
         div {{ summary }}
-
-    div(action-buttons)
-      LoanRecommendation
-      button.approve-button(@click="handleApprove") Approve
+    v-row.justify-center.pt-6
+      div(action-buttons)
+        LoanRecommendation
+      div
+        //- button.approve-button(@click="handleApprove") Approve
+        v-btn.rounded-x2.approve-button(color="#001f3f", v-bind="attrs", v-on="on" max-width="150" @click="handleApprove") Approve
 
 </template>
 
@@ -300,9 +302,10 @@ export default {
 
 .conclusion {
   margin-top: 20px;
-  max-width: 300px; /* Set your desired maximum width */
+  /* max-width: 300px; Set your desired maximum width */
   overflow: hidden; /* Optional: hide any content that overflows the box */
   justify-content: center;
+  text-justify: auto;
 }
 
 .action-buttons {

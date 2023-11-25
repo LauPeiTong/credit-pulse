@@ -25,7 +25,7 @@
                           v-row
                             v-col(v-for="n in 3" :key="n" cols="12" md="4")
                               v-item(v-slot="{ active, toggle }")
-                                v-card(:color="active ? 'light-blue lighten-4' : 'white'" class="d-flex flex-column align-center" outlined height="200" @click="toggle" max-width="350")
+                                v-card.rounded-lg(:color="active ? 'light-blue lighten-4' : 'white'" class="d-flex flex-column align-center border border-dark" outlined height="200" @click="toggle" max-width="350")
                                   v-scroll-y-transition
                                     div(class="text-h6 text-center mb-4")
                                       | Loan Recommendation {{ n }}
