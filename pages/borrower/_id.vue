@@ -3,7 +3,7 @@
   upper-title.ma-0(:title="'Customer Insights'" :icon="'bell'" :rightIconColor="$vuetify.theme.themes.light.primary")
   v-row.ma-0.pt-14.fill-width.px-2
     v-col(cols="12")
-      .d-flex.align-center
+      .d-flex.align-center(id="top")
         v-btn.shadow.white(
           text
           icon

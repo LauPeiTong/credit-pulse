@@ -107,6 +107,14 @@ export default {
       this.loanStatus = 'approved'
       this.dialogVisible = false
       this.changeLoanStatus({ c: this.customer, s: 'Rejected' })
+      this.scrollToTop()
+    },
+    scrollToTop () {
+      const element = document.getElementById('top')
+      if (element) {
+        const top = element.offsetTop
+        window.scrollTo({ top, behavior: 'smooth' })
+      }
     },
     isActive (itemNumber) {
       return this.activeItem === itemNumber

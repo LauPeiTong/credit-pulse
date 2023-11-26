@@ -202,6 +202,13 @@ export default {
         return this.$vuetify.theme.themes.background
       }
     },
+    scrollToTop () {
+      const element = document.getElementById('top')
+      if (element) {
+        const top = element.offsetTop
+        window.scrollTo({ top, behavior: 'smooth' })
+      }
+    },
     handleReject () {
       // Handle rejection logic
       console.log('Loan Rejected')
@@ -210,6 +217,7 @@ export default {
       // Handle approval logic
       this.changeLoanStatus({ c: this.customer, s: 'Approved' })
       console.log('Loan Approved')
+      this.scrollToTop()
     },
     showAnalysisDetail () {
       // Show analysis logic
