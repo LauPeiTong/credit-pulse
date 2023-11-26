@@ -36,15 +36,18 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
         .detail-label.smaller-font Monthly Payment
         .detail-value.bigger-font.blue-text MYR 2500.00
 
-    button.evaluate-button(v-if="!showAnalysis", @click="predict")
-      span Evaluate by CreditAI
-      img.robot-icon(src="../../assets/img/credit-pulse-logo.png", alt="robot-icon")
+    .d-flex.justify-center
+      v-btn.text-capitalize(color="primary" rounded v-if="!showAnalysis", @click="predict")
+        span Evaluate by CreditAI
+        v-icon(right dark) mdi-robot
 
   .analysis(v-if="showAnalysis")
-    .analysis-box
-      img.robot-icon(src="../../assets/img/credit-pulse-logo.png", alt="robot-icon")
-      .analysis-title.bigger-font.blue-text Analysis of CreditAI
-      .analysis-detail Credit Evaluation Schema:
+    .analysis-box.pa-2.mt-2
+      .d-flex
+        v-icon.primary--text mdi-robot
+        p.primary--text.mb-0.font-weight-medium.ml-2 Analysis of CreditAI
+      v-divider.my-2
+      p.primary--text.font-weight-medium Credit Evaluation Schema:
 
       .analysis-item
         div Credit Score({{ credit_score }}/40%)
@@ -65,13 +68,13 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
       .conclusion.text-justify
         div Conclusion & Reasons:
         div {{ summary }}
-    v-row.justify-center.pt-6
+    v-row.justify-center.pt-6.pb-3
       div(action-buttons)
         LoanRecommendation
-      div
+      div.ml-2
         //- button.approve-button(@click="handleApprove") Approve
-        v-btn.rounded-x2.approve-button(color="#001f3f", v-bind="attrs", v-on="on" max-width="150" @click="handleApprove") Approve
-
+        v-btn.text-capitalize(rounded color="primary" v-bind="attrs" v-on="on" @click="handleApprove") Approve
+          v-icon(right dark) mdi-check-circle
 </template>
 
 <script>
@@ -311,28 +314,10 @@ export default {
   color: #001f3f;
 }
 
-.evaluate-button {
-  background-color: #001f3f; /* Dark blue color */
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.robot-icon {
-  width: 20px;
-  height: 20px;
-  margin-left: 5px;
-}
 .analysis-box {
-  border: 2px solid #333; /* Darker border */
-  border-radius: 10px; /* Rounder corners */
-  margin-top: 20px; /* Margin between the previous box and the new box */
-  padding: 10px; /* Padding for the new box */
+  border: 2px dashed #001f3f; /* Darker border */
+  border-radius: 12px; /* Rounder corners */
+  background-color: rgba(0, 33, 71, 0.04);
 }
 
 .percentage-bar {
@@ -367,12 +352,4 @@ export default {
   margin-right: 10px;
 }
 
-.approve-button {
-  background-color: #001f3f; /* Dark blue color */
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 </style>

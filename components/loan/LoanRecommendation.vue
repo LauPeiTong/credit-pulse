@@ -4,8 +4,8 @@
         v-dialog(transition="dialog-bottom-transition", max-width="1200" max-length="800" v-model="dialogVisible")
           template(v-slot:activator="{ on, attrs }")
             //- v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150")
-            v-btn.rounded-x2.reject-button(color="#ff0000", v-bind="attrs", v-on="on" max-width="150" @click="openDialog")
-              | Reject
+            v-btn.text-capitalize(rounded dark color="warning" v-bind="attrs" v-on="on" @click="openDialog") Reject
+              v-icon(right dark) mdi-close-circle
 
           template(v-slot:default="dialog")
             v-card.rounded-xl
