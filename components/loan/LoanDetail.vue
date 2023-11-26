@@ -101,6 +101,7 @@ v-card.fill-height.shadow.pa-4.rounded-lg.white(elevation="0")
         p.primary--text.font-weight-medium.mb-0 Conclusion & Reasons:
         div(v-if="!loading")
           pre.wrapped-text {{ summary }}
+          p.text-decoration-underline.text-right View Details
         .d-flex.justify-center.pt-2(v-else)
           v-img.rounded-circle(:src="require(`../../assets/img/creditai.gif`)" max-height="200" max-width="200")
 
