@@ -48,23 +48,23 @@ export default {
       creditScoreValue: [
         {
           name: 'Payment History (45%)',
-          per: 80
+          per: null
         },
         {
           name: 'Amount Owed (20%)',
-          per: 92
+          per: null
         },
         {
           name: 'Credit History Length (7%)',
-          per: 65
+          per: null
         },
         {
           name: 'Credit Mix (14%)',
-          per: 86
+          per: null
         },
         {
           name: 'New Credit (14%)',
-          per: 74
+          per: null
         }
       ]
     }
@@ -83,6 +83,12 @@ export default {
     // console.log(this.$route.params)
     this.customer = this.getCustomerById(this.$route.params.id)
     this.series = [((this.customer.creditScore ?? 750) / 850) * 100]
+    this.creditScoreValue[0].per = this.customer.payment_history
+    this.creditScoreValue[1].per = this.customer.amount_owed
+    this.creditScoreValue[2].per = this.customer.credit_history_length
+    this.creditScoreValue[3].per = this.customer.credit_history_length
+    this.creditScoreValue[4].per = this.customer.credit_history_length
+
     this.chartOptions = {
       chart: {
         type: 'radialBar',

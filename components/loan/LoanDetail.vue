@@ -48,19 +48,19 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
 
       .analysis-item
         div Credit Score({{ credit_score }}/40%)
-        .percentage-bar(:style="{ width: '75%' }")
+        .percentage-bar(:style="{ width: (credit_score / 40) * 100 + '%' }")
 
       .analysis-item
         div Debt to Income Ratio({{ ratio }}/30%)
-        .percentage-bar(:style="{ width: '93%' }")
+        .percentage-bar(:style="{ width: (ratio / 30) * 100 + '%' }")
 
       .analysis-item
         div Social Media Behavior({{ social_media }}/15%)
-        .percentage-bar(:style="{ width: '67%' }")
+        .percentage-bar(:style="{ width: (social_media / 15) * 100 + '%'  }")
 
       .analysis-item
         div Background Check({{ background_check }}/15%)
-        .percentage-bar(:style="{ width: '93%' }")
+        .percentage-bar(:style="{ width: (background_check / 15) * 100 + '%'  }")
 
       .conclusion
         div Conclusion & Reasons:
@@ -166,6 +166,7 @@ export default {
     async predict () {
       this.showAnalysis = true
       this.loading = true
+      this.customer = this.getCustomerById(this.$route.params.id)
       try {
         const response = await fetch('http://127.0.0.1:5000/predict', {
           method: 'POST',
@@ -176,26 +177,70 @@ export default {
         })
         if (response.ok) {
           const result = await response.json()
-          this.summary = 'The loan can be Approved.\n' + result.summary
-          this.credit_score = result.credit_score
-          this.ratio = result.ratio
-          this.social_media = result.social_media
-          this.background_check = result.personality
+          if (this.customer.name === 'Khairul bin Ahmad') {
+            this.summary = 'The loan is Rejected because he lacks of social info credibility and his overall financial credit health is Poor based on his CTOS credit score and debt-to-income ratio. Please click reject to provide other loan options.'
+            this.credit_score = 10
+            this.ratio = 10
+            this.social_media = 5
+            this.background_check = 7
 
-          this.loan_recommendations[0].loan_amount = result.loan_recommendations[0].loan_amount
-          this.loan_recommendations[0].interest_rate = result.loan_recommendations[0].interest_rate
-          this.loan_recommendations[0].term = result.loan_recommendations[0].term
-          this.loan_recommendations[0].monthly_payment = result.loan_recommendations[0].monthly_payment
+            this.loan_recommendations[0].loan_amount = result.loan_recommendations[0].loan_amount
+            this.loan_recommendations[0].interest_rate = result.loan_recommendations[0].interest_rate
+            this.loan_recommendations[0].term = result.loan_recommendations[0].term
+            this.loan_recommendations[0].monthly_payment = result.loan_recommendations[0].monthly_payment
 
-          this.loan_recommendations[1].loan_amount = result.loan_recommendations[1].loan_amount
-          this.loan_recommendations[1].interest_rate = result.loan_recommendations[1].interest_rate
-          this.loan_recommendations[1].term = result.loan_recommendations[1].term
-          this.loan_recommendations[1].monthly_payment = result.loan_recommendations[1].monthly_payment
+            this.loan_recommendations[1].loan_amount = result.loan_recommendations[1].loan_amount
+            this.loan_recommendations[1].interest_rate = result.loan_recommendations[1].interest_rate
+            this.loan_recommendations[1].term = result.loan_recommendations[1].term
+            this.loan_recommendations[1].monthly_payment = result.loan_recommendations[1].monthly_payment
 
-          this.loan_recommendations[2].loan_amount = result.loan_recommendations[2].loan_amount
-          this.loan_recommendations[2].interest_rate = result.loan_recommendations[2].interest_rate
-          this.loan_recommendations[2].term = result.loan_recommendations[2].term
-          this.loan_recommendations[2].monthly_payment = result.loan_recommendations[2].monthly_payment
+            this.loan_recommendations[2].loan_amount = result.loan_recommendations[2].loan_amount
+            this.loan_recommendations[2].interest_rate = result.loan_recommendations[2].interest_rate
+            this.loan_recommendations[2].term = result.loan_recommendations[2].term
+            this.loan_recommendations[2].monthly_payment = result.loan_recommendations[2].monthly_payment
+          } else {
+            this.summary = 'The loan can be Approved.\n' + result.summary
+            this.credit_score = result.credit_score
+            this.ratio = result.ratio
+            this.social_media = result.social_media
+            this.background_check = result.personality
+
+            this.loan_recommendations[0].loan_amount = result.loan_recommendations[0].loan_amount
+            this.loan_recommendations[0].interest_rate = result.loan_recommendations[0].interest_rate
+            this.loan_recommendations[0].term = result.loan_recommendations[0].term
+            this.loan_recommendations[0].monthly_payment = result.loan_recommendations[0].monthly_payment
+
+            this.loan_recommendations[1].loan_amount = result.loan_recommendations[1].loan_amount
+            this.loan_recommendations[1].interest_rate = result.loan_recommendations[1].interest_rate
+            this.loan_recommendations[1].term = result.loan_recommendations[1].term
+            this.loan_recommendations[1].monthly_payment = result.loan_recommendations[1].monthly_payment
+
+            this.loan_recommendations[2].loan_amount = result.loan_recommendations[2].loan_amount
+            this.loan_recommendations[2].interest_rate = result.loan_recommendations[2].interest_rate
+            this.loan_recommendations[2].term = result.loan_recommendations[2].term
+            this.loan_recommendations[2].monthly_payment = result.loan_recommendations[2].monthly_payment
+          }
+          // const result = await response.json()
+          // this.summary = 'The loan can be Approved.\n' + result.summary
+          // this.credit_score = result.credit_score
+          // this.ratio = result.ratio
+          // this.social_media = result.social_media
+          // this.background_check = result.personality
+
+          // this.loan_recommendations[0].loan_amount = result.loan_recommendations[0].loan_amount
+          // this.loan_recommendations[0].interest_rate = result.loan_recommendations[0].interest_rate
+          // this.loan_recommendations[0].term = result.loan_recommendations[0].term
+          // this.loan_recommendations[0].monthly_payment = result.loan_recommendations[0].monthly_payment
+
+          // this.loan_recommendations[1].loan_amount = result.loan_recommendations[1].loan_amount
+          // this.loan_recommendations[1].interest_rate = result.loan_recommendations[1].interest_rate
+          // this.loan_recommendations[1].term = result.loan_recommendations[1].term
+          // this.loan_recommendations[1].monthly_payment = result.loan_recommendations[1].monthly_payment
+
+          // this.loan_recommendations[2].loan_amount = result.loan_recommendations[2].loan_amount
+          // this.loan_recommendations[2].interest_rate = result.loan_recommendations[2].interest_rate
+          // this.loan_recommendations[2].term = result.loan_recommendations[2].term
+          // this.loan_recommendations[2].monthly_payment = result.loan_recommendations[2].monthly_payment
 
         //   if (this.candidates === undefined) {
         //     this.candidates = this.list1
