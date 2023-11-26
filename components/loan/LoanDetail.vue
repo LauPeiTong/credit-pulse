@@ -62,7 +62,7 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
         div Background Check({{ background_check }}/15%)
         .percentage-bar(:style="{ width: '93%' }")
 
-      .conclusion
+      .conclusion.text-justify
         div Conclusion & Reasons:
         div {{ summary }}
     v-row.justify-center.pt-6
