@@ -14,7 +14,7 @@
         ApexCharts(type="bar" :options="barChartOptions" :series="series2")
     v-col(cols="4")
       v-card.fill-height.shadow.pa-3.pb-6.rounded-lg(elevation="0")
-        p.font-weight-medium Types of Loans
+        p.font-weight-medium Location of Borrowers
         ApexCharts(type="pie" :options="pieChartOptions" :series="series1")
     //- v-row
       v-card.rounded-xl.px-0.mb-4(outlined).flex

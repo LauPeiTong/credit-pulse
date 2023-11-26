@@ -337,7 +337,7 @@ export default {
 
 .percentage-bar {
   height: 10px;
-  background-color: #4caf50; /* Green color */
+  background-color: #001f3f; /* Green color */
   margin-top: 5px;
 }
 
