@@ -20,7 +20,18 @@ export const state = () => ({
           amount_owed: 50,
           credit_history_length: 60,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'A18933',
@@ -38,7 +49,18 @@ export const state = () => ({
           amount_owed: 60,
           credit_history_length: 60,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'A18934',
@@ -56,7 +78,18 @@ export const state = () => ({
           amount_owed: 92,
           credit_history_length: 65,
           credit_mix: 86,
-          new_credit: 74
+          new_credit: 74,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'A18935',
@@ -74,7 +107,18 @@ export const state = () => ({
           amount_owed: 50,
           credit_history_length: 60,
           credit_mix: 60,
-          new_credit: 55
+          new_credit: 55,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'A18936',
@@ -92,7 +136,18 @@ export const state = () => ({
           amount_owed: 50,
           credit_history_length: 60,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'A18937',
@@ -110,7 +165,18 @@ export const state = () => ({
           amount_owed: 65,
           credit_history_length: 60,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'A18938',
@@ -129,7 +195,18 @@ export const state = () => ({
           amount_owed: 50,
           credit_history_length: 60,
           credit_mix: 50,
-          new_credit: 55
+          new_credit: 55,
+          professional_background: 60,
+          education: 50,
+          network: 40,
+          skills: 50,
+          achievements: 45,
+          consistency: 40,
+          lifestyle: 50,
+          professional_life: 50,
+          relationship: 30,
+          financial_reponsibility: 40,
+          insta_consistency: 50
         },
         {
           id: 'A18939',
@@ -165,7 +242,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         }
       ]
     },
@@ -185,7 +273,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B18933',
@@ -200,7 +299,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B17934',
@@ -215,7 +325,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B15935',
@@ -230,7 +351,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B18236',
@@ -245,7 +377,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B28937',
@@ -260,7 +403,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B18922',
@@ -275,7 +429,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B48939',
@@ -290,7 +455,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         },
         {
           id: 'B56940',
@@ -305,7 +481,18 @@ export const state = () => ({
           amount_owed: 75,
           credit_history_length: 70,
           credit_mix: 70,
-          new_credit: 75
+          new_credit: 75,
+          professional_background: 80,
+          education: 76,
+          network: 53,
+          skills: 86,
+          achievements: 74,
+          consistency: 82,
+          lifestyle: 82,
+          professional_life: 65,
+          relationship: 55,
+          financial_reponsibility: 86,
+          insta_consistency: 88
         }
       ]
     }

@@ -31,7 +31,45 @@ export default {
   data () {
     return {
       customer: null,
-      financialData: [
+      financialData: null
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getCustomerById: 'customer/getCustomerById'
+    })
+  },
+  watch: {
+    $route (to, from) {
+      this.customer = to.params.customer
+    }
+  },
+  created () {
+    // console.log(this.$route.params)
+    this.customer = this.getCustomerById(this.$route.params.id)
+    if (this.customer.name === 'Khairul bin Ahmad') {
+      this.financialData = [
+        {
+          col: 6,
+          icon: 'mdi-briefcase-account',
+          title: 'Job Position',
+          value: 'Technician'
+        },
+        {
+          col: 6,
+          icon: 'mdi-domain',
+          title: 'Working Company',
+          value: 'SunPlex Engineering'
+        },
+        {
+          col: 6,
+          icon: 'mdi-calendar-blank',
+          title: 'Years in current job',
+          value: '2 years'
+        }
+      ]
+    } else {
+      this.financialData = [
         {
           col: 6,
           icon: 'mdi-briefcase-account',
@@ -52,20 +90,6 @@ export default {
         }
       ]
     }
-  },
-  computed: {
-    ...mapGetters({
-      getCustomerById: 'customer/getCustomerById'
-    })
-  },
-  watch: {
-    $route (to, from) {
-      this.customer = to.params.customer
-    }
-  },
-  created () {
-    // console.log(this.$route.params)
-    this.customer = this.getCustomerById(this.$route.params.id)
   },
   methods: {
   }

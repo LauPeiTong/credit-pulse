@@ -178,7 +178,7 @@ export default {
         if (response.ok) {
           const result = await response.json()
           if (this.customer.name === 'Khairul bin Ahmad') {
-            this.summary = 'The loan is Rejected because he lacks of social info credibility and his overall financial credit health is Poor based on his CTOS credit score and debt-to-income ratio. Please click reject to provide other loan options.'
+            this.summary = 'The loan is Rejected because he lacks of social info credibility and his overall financial credit health is Poor based on his CTOS credit score and debt-to-income ratio of 42% which is quite high. He also just started his career for 2 years which may seems that job security is not that stable. Please click reject to provide other loan options.'
             this.credit_score = 10
             this.ratio = 10
             this.social_media = 5

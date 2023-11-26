@@ -29,20 +29,7 @@ export default {
   data () {
     return {
       customer: null,
-      financialData: [
-        {
-          col: 6,
-          icon: 'mdi-hand-coin',
-          title: 'Annual Salary',
-          value: 'MYR 64,321'
-        },
-        {
-          col: 6,
-          icon: 'mdi-file',
-          title: 'Debt-To-Income Ratio',
-          value: '18%'
-        }
-      ]
+      financialData: null
     }
   },
   computed: {
@@ -58,6 +45,37 @@ export default {
   created () {
     // console.log(this.$route.params)
     this.customer = this.getCustomerById(this.$route.params.id)
+    if (this.customer.name === 'Khairul bin Ahmad') {
+      this.financialData = [
+        {
+          col: 6,
+          icon: 'mdi-hand-coin',
+          title: 'Annual Salary',
+          value: 'MYR 36,000'
+        },
+        {
+          col: 6,
+          icon: 'mdi-file',
+          title: 'Debt-To-Income Ratio',
+          value: '42%'
+        }
+      ]
+    } else {
+      this.financialData = [
+        {
+          col: 6,
+          icon: 'mdi-hand-coin',
+          title: 'Annual Salary',
+          value: 'MYR 64,321'
+        },
+        {
+          col: 6,
+          icon: 'mdi-file',
+          title: 'Debt-To-Income Ratio',
+          value: '18%'
+        }
+      ]
+    }
   },
   methods: {
   }

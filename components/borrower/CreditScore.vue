@@ -86,8 +86,8 @@ export default {
     this.creditScoreValue[0].per = this.customer.payment_history
     this.creditScoreValue[1].per = this.customer.amount_owed
     this.creditScoreValue[2].per = this.customer.credit_history_length
-    this.creditScoreValue[3].per = this.customer.credit_history_length
-    this.creditScoreValue[4].per = this.customer.credit_history_length
+    this.creditScoreValue[3].per = this.customer.credit_mix
+    this.creditScoreValue[4].per = this.customer.new_credit
 
     this.chartOptions = {
       chart: {

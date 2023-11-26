@@ -113,49 +113,49 @@ export default {
       linkedinScore: [
         {
           name: 'Professional Background',
-          per: 80
+          per: null
         },
         {
           name: 'Education and Qualifications',
-          per: 76
+          per: null
         },
         {
           name: 'Networking and Connections',
-          per: 53
+          per: null
         },
         {
           name: 'Skills and Endorsements',
-          per: 86
+          per: null
         },
         {
           name: 'Professional Achievements',
-          per: 74
+          per: null
         },
         {
           name: 'Consistency with Application Data',
-          per: 82
+          per: null
         }
       ],
       instaScore: [
         {
           name: 'Lifestyle and Spending Habits',
-          per: 82
+          per: null
         },
         {
           name: 'Professional Life',
-          per: 65
+          per: null
         },
         {
           name: 'Network and Relationships',
-          per: 55
+          per: null
         },
         {
           name: 'Financial Responsibility ',
-          per: 86
+          per: null
         },
         {
           name: 'Consistency with Application Data',
-          per: 88
+          per: null
         }
       ]
     }
@@ -173,35 +173,78 @@ export default {
   created () {
     // console.log(this.$route.params)
     this.customer = this.getCustomerById(this.$route.params.id)
-    this.linkedin = [
-      {
-        col: 6,
-        icon: 'mdi-link-variant',
-        title: 'LinkedIn URL',
-        value: 'www.linkedin.com/gan12345'
-      },
-      {
-        col: 6,
-        icon: 'mdi-account-circle',
-        title: 'Profile Name',
-        value: this.customer.name
-      }
-    ]
+    this.linkedinScore[0].per = this.customer.professional_background
+    this.linkedinScore[1].per = this.customer.education
+    this.linkedinScore[2].per = this.customer.network
+    this.linkedinScore[3].per = this.customer.skills
+    this.linkedinScore[4].per = this.customer.achievements
+    this.linkedinScore[5].per = this.customer.consistency
+    this.instaScore[0].per = this.customer.lifestyle
+    this.instaScore[1].per = this.customer.professional_life
+    this.instaScore[2].per = this.customer.relationship
+    this.instaScore[3].per = this.customer.financial_reponsibility
+    this.instaScore[4].per = this.customer.insta_consistency
+    if (this.customer.name === 'Khairul bin Ahmad') {
+      this.linkedin = [
+        {
+          col: 6,
+          icon: 'mdi-link-variant',
+          title: 'LinkedIn URL',
+          value: 'www.linkedin.com/khairul'
+        },
+        {
+          col: 6,
+          icon: 'mdi-account-circle',
+          title: 'Profile Name',
+          value: this.customer.name
+        }
+      ]
 
-    this.instagram = [
-      {
-        col: 6,
-        icon: 'mdi-link-variant',
-        title: 'LinkedIn URL',
-        value: 'www.instagram.com/gan12345'
-      },
-      {
-        col: 6,
-        icon: 'mdi-account-circle',
-        title: 'Profile Name',
-        value: this.customer.name
-      }
-    ]
+      this.instagram = [
+        {
+          col: 6,
+          icon: 'mdi-link-variant',
+          title: 'LinkedIn URL',
+          value: 'www.instagram.com/khairul'
+        },
+        {
+          col: 6,
+          icon: 'mdi-account-circle',
+          title: 'Profile Name',
+          value: this.customer.name
+        }
+      ]
+    } else {
+      this.linkedin = [
+        {
+          col: 6,
+          icon: 'mdi-link-variant',
+          title: 'LinkedIn URL',
+          value: 'www.linkedin.com/gan12345'
+        },
+        {
+          col: 6,
+          icon: 'mdi-account-circle',
+          title: 'Profile Name',
+          value: this.customer.name
+        }
+      ]
+
+      this.instagram = [
+        {
+          col: 6,
+          icon: 'mdi-link-variant',
+          title: 'LinkedIn URL',
+          value: 'www.instagram.com/gan12345'
+        },
+        {
+          col: 6,
+          icon: 'mdi-account-circle',
+          title: 'Profile Name',
+          value: this.customer.name
+        }
+      ]
+    }
   },
   methods: {
     getProgressBarColor (value) {
