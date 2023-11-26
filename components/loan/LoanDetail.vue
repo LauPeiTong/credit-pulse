@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card.shadow.pa-4.rounded-lg.white(elevation="0")
+v-card.fill-height.shadow.pa-4.rounded-lg.white(elevation="0")
   .loan-approval-summary
     .d-flex.justify-space-between.align-center.mb-2
       p.mb-0.font-weight-medium Loan Approval Summary
@@ -10,28 +10,27 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
       )
         p.mb-0 {{ customer.status }}
 
-    .detail-box
-      .detail
-        .detail-label Loan Amount
-        .detail-value.bigger-font.blue-text MYR 100,000
+    .v-card.rounded-lg.primary-linear.mb-3.pa-3
+      .detail-label.white--text.pt-8 Loan Amount
+      h2.detail-value.white--text {{$formatCurrency(customer.amount)}}
 
-    .detail-box
+    .detail-box.mb-3
       .detail
         .detail-label.smaller-font Loan Product
-        .detail-value.bigger-font.blue-text Personal Loan
-        .detail-value.smaller-font for house purchase
+        .detail-value.bigger-font.blue-text {{customer.category}}
+        .detail-value.smaller-font {{customer.purpose}}
 
-    .detail-box
+    .detail-box.mb-3
       .detail
         .detail-label.smaller-font Interest Rate
         .detail-value.bigger-font.blue-text 7.00%
 
-    .detail-box
+    .detail-box.mb-3
       .detail
         .detail-label.smaller-font Loan Term
         .detail-value.bigger-font.blue-text 6 years 0 months
 
-    .detail-box
+    .detail-box.mb-3
       .detail
         .detail-label.smaller-font Monthly Payment
         .detail-value.bigger-font.blue-text MYR 1486.11
@@ -42,32 +41,69 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
         v-icon(right dark) mdi-robot
 
   .analysis(v-if="showAnalysis")
-    .analysis-box.pa-2.mt-2
+    .analysis-box.pa-2
       .d-flex
         v-icon.primary--text mdi-robot
         p.primary--text.mb-0.font-weight-medium.ml-2 Analysis of CreditAI
       v-divider.my-2
-      p.primary--text.font-weight-medium Credit Evaluation Schema:
+      p.primary--text.font-weight-medium.mb-0 Credit Evaluation Schema:
 
       .analysis-item
-        div Credit Score({{ credit_score }}/40%)
-        .percentage-bar(:style="{ width: (credit_score / 40) * 100 + '%' }")
+        p.body-2.mb-0 Credit Score({{ credit_score }}/40%)
+        v-progress-linear.rounded-xl.mb-2(
+          :value="(credit_score / 40) * 100"
+          :color="getProgressBarColor((credit_score / 40) * 100)"
+          :background-color="$vuetify.theme.themes.light.background"
+          :indeterminate="loading"
+          height="28"
+        )
+          template(v-slot:default="{ value }")
+            strong.white--text {{ credit_score }} / 40 %
 
       .analysis-item
-        div Debt to Income Ratio({{ ratio }}/30%)
-        .percentage-bar(:style="{ width: (ratio / 30) * 100 + '%' }")
+        p.body-2.mb-0 Debt to Income Ratio({{ ratio }}/30%)
+        v-progress-linear.rounded-xl.mb-2(
+          :value="(ratio / 30) * 100"
+          :color="getProgressBarColor((ratio / 30) * 100)"
+          :background-color="$vuetify.theme.themes.light.background"
+          :indeterminate="loading"
+          height="28"
+        )
+          template(v-slot:default="{ value }")
+            strong.white--text {{ ratio }} / 30 %
 
       .analysis-item
-        div Social Media Behavior({{ social_media }}/15%)
-        .percentage-bar(:style="{ width: (social_media / 15) * 100 + '%'  }")
+        p.body-2.mb-0 Social Media Behavior({{ social_media }}/15%)
+        v-progress-linear.rounded-xl.mb-2(
+          :value="(social_media / 15) * 100"
+          :color="getProgressBarColor((social_media / 15) * 100)"
+          :background-color="$vuetify.theme.themes.light.background"
+          :indeterminate="loading"
+          height="28"
+        )
+          template(v-slot:default="{ value }")
+            strong.white--text {{ social_media }} / 15 %
 
       .analysis-item
-        div Background Check({{ background_check }}/15%)
-        .percentage-bar(:style="{ width: (background_check / 15) * 100 + '%'  }")
+        p.body-2.mb-0 Background Check({{ background_check }}/15%)
+        v-progress-linear.rounded-xl.mb-2(
+          :value="(background_check / 15) * 100"
+          :color="getProgressBarColor((background_check / 15) * 100)"
+          :background-color="$vuetify.theme.themes.light.background"
+          :indeterminate="loading"
+          height="28"
+        )
+          template(v-slot:default="{ value }")
+            strong.white--text {{ background_check }} / 15 %
 
+      v-divider.mt-4.mb-2
       .conclusion.text-justify
-        div Conclusion & Reasons:
-        div {{ summary }}
+        p.primary--text.font-weight-medium.mb-0 Conclusion & Reasons:
+        div(v-if="!loading")
+          pre.wrapped-text {{ summary }}
+        .d-flex.justify-center.pt-2(v-else)
+          v-img.rounded-circle(:src="require(`../../assets/img/creditai.gif`)" max-height="200" max-width="200")
+
     v-row.justify-center.pt-6.pb-3
       div(action-buttons)
         LoanRecommendation
@@ -89,6 +125,7 @@ export default {
     return {
       // loanStatus: false,
       customer: null,
+      loading: true,
       showAnalysis: false,
       summary: '',
       credit_score: 0,
@@ -136,6 +173,19 @@ export default {
     ...mapActions({
       changeLoanStatus: 'customer/changeLoanStatus'
     }),
+    getProgressBarColor (value) {
+      const color = this.$vuetify.theme.themes.light.primary
+      const opacity = (value) / 100 + 0.1 // Assuming value is between 0 and 100
+
+      // Parse the color to get the RGB values
+      const matches = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i)
+      const r = parseInt(matches[1], 16)
+      const g = parseInt(matches[2], 16)
+      const b = parseInt(matches[3], 16)
+
+      // Return the color with the adjusted opacity
+      return `rgba(${r}, ${g}, ${b}, ${opacity})`
+    },
     getColor (status) {
       const result = this.colors.find((c) => { return c.name === status })
       if (result) {
@@ -264,6 +314,17 @@ export default {
 </script>
 
 <style scoped>
+:deep(.v-progress-linear) {
+  border: solid 6px #d6dceb;
+}
+
+.wrapped-text {
+  white-space: pre-wrap;
+}
+
+.primary-linear {
+  background: linear-gradient(200deg, #A6C2EC 5.17%, #5761B8 49.42%, #002147 117.87%);
+}
 
 .title {
   font-size: 18px;
@@ -291,7 +352,6 @@ export default {
 .detail-box {
   border: 2px solid #333; /* Darker border */
   border-radius: 10px; /* Rounder corners */
-  margin-bottom: 10px; /* Reduced margin */
   padding: 10px; /* Reduced padding */
 }
 
@@ -326,12 +386,7 @@ export default {
   margin-top: 5px;
 }
 
-.analysis-item {
-  margin-top: 15px;
-}
-
 .conclusion {
-  margin-top: 20px;
   /* max-width: 300px; Set your desired maximum width */
   overflow: hidden; /* Optional: hide any content that overflows the box */
   justify-content: center;

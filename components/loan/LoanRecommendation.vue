@@ -10,38 +10,33 @@
           template(v-slot:default="dialog")
             v-card.rounded-xl
               fetchdata()
-              v-toolbar(color="primary", dark)
-                span.white--text Loan Application Recommendation
-              v-card-text(color="black")
-                div.subtitle-1.pa-4
+              v-toolbar.px-4(elevation="0")
+                h3.primary--text.font-weight-medium Loan Application Recommendation
+              v-card-text.pb-0(color="black")
+                div.subtitle-1.pa-3.secondary--text
                   | Based on the financial profile, we recommend the following loan options.
                   | If the application is rejected, these alternative loan options will be suggested for the customer.
                   | This can help applicants explore other avenues and find a better-suited loan product.
                 v-row.justify-center
                   v-col
-                    .d-flex.justify-center.pt-5
-                      v-item-group
-                        v-container
-                          v-row
-                            v-col(v-for="n in 3" :key="n" cols="12" md="4")
-                              v-item(v-slot="{ active, toggle }")
-                                v-card.rounded-lg(:color="active ? 'light-blue lighten-4' : 'white'" class="d-flex flex-column align-center border border-dark" outlined height="200" @click="toggle" max-width="350")
-                                  v-scroll-y-transition
-                                    div(class="text-h6 text-center mb-4")
-                                      | Loan Recommendation {{ n }}
-                                      br
-                                      | Amount: RM{{ loan_recommendations[n-1].loan_amount }}
-                                      br
-                                      | Term: {{ loan_recommendations[n-1].term }}
-                                      br
-                                      | Interest Rate: {{ loan_recommendations[n-1].interest_rate }}%
-                                      br
-                                      | Monthly Payment: RM{{ loan_recommendations[n-1].monthly_payment  }}
+                    .d-flex.pt-3.px-4
+                      v-item-group.fill-width
+                        v-row
+                          v-col(v-for="n in 3" :key="n" cols="12" md="4")
+                            v-item(v-slot="{ active, toggle }")
+                              v-card.fill-width.pa-3.rounded-lg.d-flex.flex-column.align-center(:class="active ? 'primary--card' : 'gray--card'" outlined @click="toggle")
+                                .text-center
+                                  h3.font-weight-medium Loan Recommendation {{ n }}
+                                  v-divider.mb-2
+                                  p.mb-0 Amount: RM{{ loan_recommendations[n-1].loan_amount }}
+                                  p.mb-0 Term: {{ loan_recommendations[n-1].term }}
+                                  p.mb-0 Interest Rate: {{ loan_recommendations[n-1].interest_rate }}%
+                                  p.mb-0 Monthly Payment: RM{{ loan_recommendations[n-1].monthly_payment  }}
                     v-card-text.justify-center
-                      div.subtitle-1.pa-4 Are you sure you want to reject the loan application for Khairul bin Ahmad?
-              v-card-actions(class="justify-center")
-                v-btn(color="grey", @click="goBackToPreviousPage()") Cancel
-                v-btn(color="red", @click="rejected()") Reject
+                      div.subtitle-1.primary--text Are you sure you want to reject the loan application for {{ customer.name }}?
+              v-card-actions.justify-center.text-center.pb-3
+                v-btn.text-capitalize(rounded dark color="grey" v-bind="attrs" v-on="on" @click="goBackToPreviousPage()") Cancel
+                v-btn.text-capitalize(rounded dark color="warning" v-bind="attrs" v-on="on" @click="rejected()") Reject
 
   </template>
 
@@ -132,6 +127,15 @@ export default {
 </script>
 
 <style scoped>
+.primary--card {
+  border: 1px solid #002147;
+  color: #002147;
+}
+
+.gray--card {
+  border: 1px solid gray;
+  color: gray;
+}
 .button {
   float: left;
   margin: 0 5px 0 0;
