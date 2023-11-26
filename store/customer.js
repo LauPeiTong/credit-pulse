@@ -15,7 +15,12 @@ export const state = () => ({
           purpose: 'House Purchase',
           phone: '+6016-800 1231',
           email: 'nicholas@gmail.com',
-          creditScore: 760
+          creditScore: 760,
+          payment_history: 70,
+          amount_owed: 50,
+          credit_history_length: 60,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'A18933',
@@ -28,7 +33,12 @@ export const state = () => ({
           purpose: 'Debt Consolidation',
           phone: '+6014-123 1111',
           email: 'sayheng@gmail.com',
-          creditScore: 790
+          creditScore: 790,
+          payment_history: 70,
+          amount_owed: 60,
+          credit_history_length: 60,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'A18934',
@@ -41,7 +51,12 @@ export const state = () => ({
           purpose: 'House Purchase',
           phone: '+6012-482 2911',
           email: 'raygan@gmail.com',
-          creditScore: 804
+          creditScore: 804,
+          payment_history: 80,
+          amount_owed: 92,
+          credit_history_length: 65,
+          credit_mix: 86,
+          new_credit: 74
         },
         {
           id: 'A18935',
@@ -54,7 +69,12 @@ export const state = () => ({
           purpose: 'Purchase or refinance a home',
           phone: '+6012-899 8922',
           email: 'meng@gmail.com',
-          creditScore: 612
+          creditScore: 612,
+          payment_history: 60,
+          amount_owed: 50,
+          credit_history_length: 60,
+          credit_mix: 60,
+          new_credit: 55
         },
         {
           id: 'A18936',
@@ -67,7 +87,12 @@ export const state = () => ({
           purpose: 'Debt Collection',
           phone: '+6014-232 2221',
           email: 'kris@gmail.com',
-          creditScore: 712
+          creditScore: 712,
+          payment_history: 70,
+          amount_owed: 50,
+          credit_history_length: 60,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'A18937',
@@ -80,7 +105,12 @@ export const state = () => ({
           purpose: 'Other',
           phone: '+6017-122 6744',
           email: 'evans@gmail.com',
-          creditScore: 634
+          creditScore: 634,
+          payment_history: 60,
+          amount_owed: 65,
+          credit_history_length: 60,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'A18938',
@@ -94,7 +124,12 @@ export const state = () => ({
           phone: '+6012-111 3223',
           email: 'khairul@gmail.com',
           race: 'Malay',
-          creditScore: 567
+          creditScore: 567,
+          payment_history: 60,
+          amount_owed: 50,
+          credit_history_length: 60,
+          credit_mix: 50,
+          new_credit: 55
         },
         {
           id: 'A18939',
@@ -107,7 +142,12 @@ export const state = () => ({
           purpose: 'Debt Consolidation',
           phone: '+6016-376 9888',
           email: 'peitong@gmail.com',
-          creditScore: 744
+          creditScore: 744,
+          payment_history: 70,
+          amount_owed: 70,
+          credit_history_length: 75,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'A18940',
@@ -120,7 +160,12 @@ export const state = () => ({
           status: 'Approved',
           phone: '+6016-877 6554',
           email: 'dylan@gmail.com',
-          creditScore: 722
+          creditScore: 722,
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         }
       ]
     },
@@ -135,7 +180,12 @@ export const state = () => ({
           date: '13/05/2022',
           logo: 1,
           status: 'Processing',
-          purpose: 'Funding for new businesses'
+          purpose: 'Funding for new businesses',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B18933',
@@ -145,7 +195,12 @@ export const state = () => ({
           date: '14/05/2022',
           logo: 2,
           status: 'Approved',
-          purpose: 'Funding for expansion'
+          purpose: 'Funding for expansion',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B17934',
@@ -155,7 +210,12 @@ export const state = () => ({
           date: '15/05/2022',
           logo: 3,
           status: 'Processing',
-          purpose: 'Funding for expansion'
+          purpose: 'Funding for expansion',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B15935',
@@ -165,7 +225,12 @@ export const state = () => ({
           date: '15/05/2022',
           logo: 4,
           status: 'Rejected',
-          purpose: 'Funding for expansion'
+          purpose: 'Funding for expansion',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B18236',
@@ -175,7 +240,12 @@ export const state = () => ({
           date: '16/05/2022',
           logo: 5,
           status: 'Approved',
-          purpose: 'Funding for new businesses'
+          purpose: 'Funding for new businesses',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B28937',
@@ -185,7 +255,12 @@ export const state = () => ({
           date: '16/05/2022',
           logo: 6,
           status: 'Processing',
-          purpose: 'Funding for new business'
+          purpose: 'Funding for new business',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B18922',
@@ -195,7 +270,12 @@ export const state = () => ({
           date: '18/05/2022',
           logo: 7,
           status: 'Approved',
-          purpose: 'Purchasing of business equipment or machinery'
+          purpose: 'Purchasing of business equipment or machinery',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B48939',
@@ -205,7 +285,12 @@ export const state = () => ({
           date: '22/05/2022',
           logo: 8,
           status: 'Processing',
-          purpose: 'Funding for expansion'
+          purpose: 'Funding for expansion',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         },
         {
           id: 'B56940',
@@ -215,7 +300,12 @@ export const state = () => ({
           date: '22/05/2022',
           logo: 8,
           status: 'Approved',
-          purpose: 'Funding for new businesses'
+          purpose: 'Funding for new businesses',
+          payment_history: 70,
+          amount_owed: 75,
+          credit_history_length: 70,
+          credit_mix: 70,
+          new_credit: 75
         }
       ]
     }
