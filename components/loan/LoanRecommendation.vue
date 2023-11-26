@@ -38,7 +38,7 @@
                                       br
                                       | Monthly Payment: RM{{ loan_recommendations[n-1].monthly_payment  }}
                     v-card-text.justify-center
-                      div.subtitle-1.pa-4 Are you sure you want to reject the loan application for Ray Gan?
+                      div.subtitle-1.pa-4 Are you sure you want to reject the loan application for Khairul bin Ahmad?
               v-card-actions(class="justify-center")
                 v-btn(color="grey", @click="goBackToPreviousPage()") Cancel
                 v-btn(color="red", @click="rejected()") Reject
