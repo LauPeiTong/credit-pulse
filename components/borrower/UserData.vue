@@ -10,7 +10,7 @@
       :key="t"
     ) {{ t }}
 
-  v-card.shadow.pa-4.rounded-b-lg.rounded-tr-lg(elevation="0")
+  v-card.fill-height.shadow.pa-4.rounded-b-lg.rounded-tr-lg(elevation="0")
     v-tabs-items(v-model="tab")
       v-tab-item
         credit-score-vue
