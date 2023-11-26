@@ -24,7 +24,7 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
     .detail-box
       .detail
         .detail-label.smaller-font Interest Rate
-        .detail-value.bigger-font.blue-text 4.45%
+        .detail-value.bigger-font.blue-text 7.00%
 
     .detail-box
       .detail
@@ -34,7 +34,7 @@ v-card.shadow.pa-4.rounded-lg.white(elevation="0")
     .detail-box
       .detail
         .detail-label.smaller-font Monthly Payment
-        .detail-value.bigger-font.blue-text MYR 2500.00
+        .detail-value.bigger-font.blue-text MYR 1486.11
 
     button.evaluate-button(v-if="!showAnalysis", @click="predict")
       span Evaluate by CreditAI
