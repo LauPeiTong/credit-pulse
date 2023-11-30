@@ -1,5 +1,17 @@
 # credit-pulse
 
+## Application Overview
+You can access the website throught this link: https://credit-pulse.netlify.app
+It is a Gen-AI driven-solution that automates categorization of an individual’s creditworthiness:
+1. Borrower‘s profile builder
+   Extracting  key data from customer-submitted documents to automate build borrower’s profile
+
+2. Credit Analysis
+   Evaluate credit health using fined tuned Generative AI based on bank data and non bank data
+
+3. Loan Plan Recommendation
+   Employing models to recommend personalized loan term and interest rate for different customers
+
 ## Build Setup
 
 ```bash
