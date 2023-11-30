@@ -6,16 +6,15 @@ It is a Gen-AI driven-solution that automates categorization of an individual’
 1. Borrower‘s profile builder
    Extracting  key data from customer-submitted documents to automate build borrower’s profile
    [<img src="./assets/img/UI2.png" />](./assets/img/UI2.png)
-   [<img src="./assets/img/UI3.png" />](./assets/img/UI3.png)
-   [<img src="./assets/img/UI5.png" />](./assets/img/UI5.png)
 
 3. Credit Analysis
    Evaluate credit health using fined tuned Generative AI based on bank data and non bank data
+   [<img src="./assets/img/UI3.png" />](./assets/img/UI3.png)
    [<img src="./assets/img/UI4.png" />](./assets/img/UI4.png)
 
 5. Loan Plan Recommendation
    Employing models to recommend personalized loan term and interest rate for different customers
-   [<img src="./assets/img/UI6.png" />](./assets/img/UI6.png)
+   [<img src="./assets/img/UI5.png" />](./assets/img/UI5.png)
 
 7. Loan Overview
    [<img src="./assets/img/UI1.png" />](./assets/img/UI1.png)  
