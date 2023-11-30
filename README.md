@@ -12,6 +12,9 @@ It is a Gen-AI driven-solution that automates categorization of an individual’
 3. Loan Plan Recommendation
    Employing models to recommend personalized loan term and interest rate for different customers
 
+4. Loan Overview
+   [<img src="./assets/img/UI1.png" />](./assets/img/UI1.png)  
+
 ## Build Setup
 
 ```bash
